@@ -1,37 +1,49 @@
-Counter App with Kotlin & Jetpack Compose
-A simple counter application developed using Kotlin and Jetpack Compose, following the MVVM architecture for a clean and maintainable codebase.
+---
 
-📱 Features
-Increment Counter: Tap to increase the counter value.
-Decrement Counter: Tap to decrease the counter value.
-Reset Counter: Reset the counter back to zero with a single click.
-Modern UI: Built using Jetpack Compose for a smooth, reactive user experience.
-🛠️ Tech Stack
-Programming Language: Kotlin
-UI Toolkit: Jetpack Compose
-Architecture: MVVM (Model-View-ViewModel)
-🚀 Getting Started
+#  Counter App (Kotlin & Jetpack Compose)
+
+A **simple yet elegant Counter App** built using **Kotlin and Jetpack Compose**, following the **MVVM architecture** for clean and maintainable code.
+
+## 📱 Features
+
+✅ **Increment Counter** – Tap to increase the counter value.  
+✅ **Decrement Counter** – Tap to decrease the counter value.  
+✅ **Reset Counter** – Reset the counter back to zero with a single click.  
+✅ **Modern UI** – Built using **Jetpack Compose** for a smooth and reactive user experience.  
+
+## 🛠️ Tech Stack
+
+- **Programming Language:** Kotlin  
+- **UI Toolkit:** Jetpack Compose  
+- **Architecture:** MVVM (Model-View-ViewModel)  
+
+## 🚀 Getting Started
+
 To run the project locally, follow these steps:
 
-Clone the repository:
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/ishansaxena012/counter-app.git
+   ```
+2. **Open the project** in **Android Studio**.  
+3. **Build & Run** the project on an emulator or physical device.  
 
-bash
-Copy code
-git clone https://github.com/ishansaxena012/counter-app.git
-Open the project in Android Studio.
+## 💡 Architecture Overview
 
-Build and Run the project on an emulator or device.
+The app follows the **MVVM architecture**, ensuring better separation of concerns and maintainability:
 
-💡 Architecture
-The app uses MVVM architecture, which separates logic, data, and UI components for better maintainability:
+- **Model (M):** Handles data and business logic.  
+- **View (V):** Displays UI elements using Jetpack Compose.  
+- **ViewModel (VM):** Manages UI-related data and business logic.  
 
-Model: Handles data and business logic.
-View: Displays UI elements using Jetpack Compose.
-ViewModel: Acts as a bridge between the Model and View, managing UI-related data.
+## 🤝 Contributing
 
+Contributions are welcome! 🚀  
 
-🤝 Contributing
-Contributions are welcome! If you'd like to improve or extend the app, feel free to fork the repository and submit a pull request.
+If you'd like to **improve** or **extend** the app, feel free to **fork** the repository, create a new branch, and submit a **pull request**.  
 
+---
 
-Happy Coding! 🚀
+💻 **Happy Coding!** 😃🎉  
+
+---
