@@ -4,19 +4,19 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-class CounterViewModel() : ViewModel() {
+class CounterViewModel : ViewModel() {
 
-    private val _repository: CounterRepository = CounterRepository()
-    private val _count = MutableStateFlow(_repository.getCounter().count)  // Use MutableStateFlow for counter value
-    val count: StateFlow<Int> = _count       // Expose count as StateFlow
+    private val repository = CounterRepository()
+    private val _count = MutableStateFlow(repository.getCounter())
+    val count: StateFlow<Int> = _count
 
     fun increment() {
-        _repository.incrementCounter()
-        _count.value =_repository.getCounter().count
+        repository.incrementCounter()
+        _count.value = repository.getCounter()
     }
 
     fun decrement() {
-        _repository.decrementCounter()
-        _count.value =_repository.getCounter().count
+        repository.decrementCounter()
+        _count.value = repository.getCounter()
     }
 }

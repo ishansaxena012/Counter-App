@@ -1,17 +1,14 @@
 package ishan.tutorial.counterapp1
 
-data class CounterModel(var count: Int)
-class CounterRepository{
-    private var _counter = CounterModel(0)
+class CounterRepository {
+    private var _count = 0
 
-    fun getCounter() = _counter
-    fun incrementCounter(){
-        _counter.count++
+    fun getCounter(): Int = _count
+    fun incrementCounter() {
+        _count++
     }
 
-    fun decrementCounter(){
-        _counter.count--
+    fun decrementCounter() {
+        _count--
     }
-
-
 }
