@@ -3,6 +3,7 @@ package ishan.tutorial.counterapp1
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -21,20 +22,27 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+
 class MainActivity : ComponentActivity() {
+
+    private val viewModel: CounterViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            CounterApp()
+            val count by viewModel.count.collectAsState()
+
+            CounterApp(
+                count = count,
+                onIncrement = { viewModel.increment() },
+                onDecrement = { viewModel.decrement() }
+            )
         }
     }
 }
 
-
 @Composable
-fun CounterApp() {
-    var count by remember { mutableStateOf(0) }
-
+fun CounterApp(count: Int, onIncrement: () -> Unit, onDecrement: () -> Unit) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -52,13 +60,13 @@ fun CounterApp() {
             verticalArrangement = Arrangement.Center,
             modifier = Modifier
                 .padding(16.dp)
-                .background(Color.White.copy(alpha = 0.3f), shape = RoundedCornerShape(18.dp)) // Softer overlay
+                .background(Color.White.copy(alpha = 0.3f), shape = RoundedCornerShape(18.dp))
                 .padding(20.dp)
         ) {
-            // Title with Elegant Brown Gradient
+            // Title
             Text(
                 text = "Counter",
-                fontSize = 36.sp, // Increased slightly for prominence
+                fontSize = 36.sp,
                 fontWeight = FontWeight.ExtraBold,
                 color = Color.White,
                 modifier = Modifier
@@ -74,7 +82,7 @@ fun CounterApp() {
 
             Spacer(modifier = Modifier.height(18.dp))
 
-            // Counter Number with Subtle Background
+            // Counter Display
             Text(
                 text = "$count",
                 fontSize = 42.sp,
@@ -84,22 +92,22 @@ fun CounterApp() {
                     .shadow(5.dp, shape = RoundedCornerShape(16.dp))
                     .background(
                         brush = Brush.verticalGradient(
-                            colors = listOf(Color(0xFF5D4037), Color(0xFFBCAAA4)) // Warm brown gradient
+                            colors = listOf(Color(0xFF5D4037), Color(0xFFBCAAA4))
                         ),
                         shape = RoundedCornerShape(16.dp)
                     )
-                    .border(1.2.dp, Color(0xFF8D6E63), shape = RoundedCornerShape(16.dp)) // Refined border
+                    .border(1.2.dp, Color(0xFF8D6E63), shape = RoundedCornerShape(16.dp))
                     .padding(horizontal = 18.dp, vertical = 12.dp)
             )
 
             Spacer(modifier = Modifier.height(22.dp))
 
-            // Buttons with Warm Earthy Colors
+            // Buttons
             Row {
                 Button(
-                    onClick = { count++ },
+                    onClick = { onIncrement() },
                     shape = RoundedCornerShape(14.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8D6E63)), // Warm Coffee Brown
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8D6E63)),
                     modifier = Modifier
                         .padding(8.dp)
                         .shadow(6.dp, shape = RoundedCornerShape(14.dp))
@@ -108,9 +116,9 @@ fun CounterApp() {
                 }
 
                 Button(
-                    onClick = { count-- },
+                    onClick = { onDecrement() },
                     shape = RoundedCornerShape(14.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFC2A67E)), // Earthy Beige
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFC2A67E)),
                     modifier = Modifier
                         .padding(8.dp)
                         .shadow(6.dp, shape = RoundedCornerShape(14.dp))
